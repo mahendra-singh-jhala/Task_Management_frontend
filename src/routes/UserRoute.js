@@ -5,6 +5,7 @@ import Register from '../page/auth/Register'
 import CreateTask from '../component/task/CreateTask'
 import Navbar from '../component/navbar/Navbar'
 import { Route, Routes } from 'react-router-dom'
+import PageNotFound from '../page/pagenotfound/PageNotFound'
 
 const UserRoute = () => {
     const [show, setShow] = useState(false);
@@ -16,6 +17,7 @@ const UserRoute = () => {
                 <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/home/*" element={<Home />} />
+                <Route path="*" element={<PageNotFound />}/>
             </Routes>
             {show && (
                 <CreateTask onClose={() => setShow(false)} />
