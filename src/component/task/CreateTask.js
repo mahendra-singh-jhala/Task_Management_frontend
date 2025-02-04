@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { createTask, getTask } from "../../state/task/Action";
+import { createTask } from "../../state/task/Action";
 
 const CreateTask = ({ onClose }) => {
     const dispatch = useDispatch()

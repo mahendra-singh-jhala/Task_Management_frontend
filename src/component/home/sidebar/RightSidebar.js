@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { PieChart, Pie, Cell, Text } from 'recharts';
+import { PieChart, Pie, Cell } from 'recharts';
 import logoImage from '../../../asset/logo.png'
 import { useSelector } from 'react-redux';
 
@@ -7,7 +6,7 @@ const RightSidebar = () => {
 	const auth = useSelector(state => state.auth)
 	const task = useSelector(state => state.task?.task?.data?.task)
 
-	// Directly calculate the complete and pending tasks
+	// calculate the complete and pending tasks
 	let complete = 0, pending = 0, overdue = 0;
 	if (task && Array.isArray(task)) {
 		complete = task.filter(task => task.status === "inactive").length;
@@ -17,7 +16,6 @@ const RightSidebar = () => {
 			return dueDate < new Date() && task.status === "active";
 		}).length;
 	}
-
 	const total = complete + pending
 	// Data for Pie Chart
 	const data = [
