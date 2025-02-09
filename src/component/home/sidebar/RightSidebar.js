@@ -3,9 +3,9 @@ import logoImage from '../../../asset/logo.png'
 import { useSelector } from 'react-redux';
 
 const RightSidebar = () => {
-	const auth = useSelector(state => state.auth)
 	const task = useSelector(state => state.task?.task?.data?.task)
-
+	const user = (JSON.parse(localStorage.getItem("token") || "{}").user) || []
+	
 	// calculate the complete and pending tasks
 	let complete = 0, pending = 0, overdue = 0;
 	if (task && Array.isArray(task)) {
@@ -28,8 +28,8 @@ const RightSidebar = () => {
 			<div className="row-span-2 flex items-center justify-center bg-gray-700 rounded-lg">
 				<img className="w-16 h-16 rounded-full bg-white" alt="logoImage" src={logoImage} />
 				<div>
-					<h1 className="text-2xl font-bold text-white ml-6"> {auth?.user?.firstname} </h1>
-					<h1 className="text-2xl font-bold text-white ml-6"> {auth?.user?.lastname} </h1>
+					<h1 className="text-2xl font-bold text-white ml-6"> {user?.firstname} </h1>
+					<h1 className="text-2xl font-bold text-white ml-6"> {user?.lastname} </h1>
 				</div>
 			</div>
 			<div className="row-span-4 mt-4">
