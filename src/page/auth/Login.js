@@ -6,6 +6,7 @@ import { getUser, login } from "../../state/auth/Action";
 const Login = () => {
     const dispatch = useDispatch();
     const auth = useSelector(state => state.auth)
+    const { isLoading } = useSelector(state => state.auth)
     const navigate = useNavigate()
 
     // Handle form submission
@@ -66,7 +67,11 @@ const Login = () => {
                         Don't have an account?
                     </Link>
                     <button type="submit" className="w-full flex items-center justify-center px-5 py-2 text-md font-medium text-center bg-gray-400 bg-opacity-50 rounded cursor-pointer hover:text-slate-900 mt-1">
-                        LogIn
+                        {isLoading ? (
+                            <span>Loading...</span>
+                        ) : (
+                            "Login"
+                        )}
                     </button>
                 </form>
             </div>
